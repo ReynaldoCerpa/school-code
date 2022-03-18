@@ -85,6 +85,6 @@ void decipher() {
     }
     
     std::cout << "\n--------------------------------------";
-    std::cout << "\n    Dencrypted message: " << msg <<std::endl;
+    std::cout << "\n    Decrypted message: " << msg <<std::endl;
     std::cout << "--------------------------------------\n";
 }
