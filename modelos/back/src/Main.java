@@ -6,25 +6,18 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String[] numArr;
         String temp;
-        int streak = 0;
         
         System.out.print("Ingrese números: ");
         String input = scan.nextLine();
         numArr =  input.split(" ",0);
 
-        while(true) {
-            streak = 0;
+        for (int j = 0; j < numArr.length - 1; j++) {
             for (int i = 0; i < numArr.length - 1; i++) {
                 if(Integer.parseInt(numArr[i]) > Integer.parseInt(numArr[i + 1])) {
                     temp = numArr[i + 1];
                     numArr[i + 1] = numArr[i];
                     numArr[i] = temp;
-                } else {
-                    streak++;
                 }
-            }
-            if (streak == numArr.length - 1) {
-               break; 
             }
         }
 
