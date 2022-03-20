@@ -69,17 +69,31 @@ public class Main{
 
             } else {
                 caso = "cuadrado";
-                if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
-                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
-                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                if (first == l) {
+                    if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
+                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                    } else {
+                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    }
                 } else {
-                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
-                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
+                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    } else {
+                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                    }
                 }
             }
             System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
         }
         System.out.println("Mensaje encriptado: "+encripted);
+
+    }
+
+    public static void decipher() {
 
     }
     public static void main(String[] args) {
