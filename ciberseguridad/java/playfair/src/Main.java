@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Math;
 
 public class Main{
     public static Scanner scan = new Scanner(System.in);
@@ -35,7 +34,7 @@ public class Main{
         if (msg.length() % 2 != 0) msg += "x";
 
         for (int i = 0; i < msg.length(); i+=2) {
-            char l = msg.charAt(i), r = msg.charAt(i+1); //represents the left and right letter from a straight array perspective
+            char l = msg.charAt(i), r = msg.charAt(i+1), first = l; //represents the left and right letter from a straight array perspective
             if(key.indexOf(msg.charAt(i)) > key.indexOf(msg.charAt(i+1))){
                 r = msg.charAt(i);
                 l = msg.charAt(i+1);
@@ -43,33 +42,49 @@ public class Main{
 
             int linediff = (key.indexOf(r) / 5 - 1) - (key.indexOf(l) / 5);
             if(linediff < 0) linediff = 0;
+
             //case checker
             String caso = "";
             if (key.indexOf(r) == key.indexOf(l) + 5 + (linediff * 5)) {
 
                 caso = "vertical";
-                encripted += key.charAt(key.indexOf(l)+5);
-                if (key.indexOf(r)+5 > key.length() - 1) {
-                    int index = (key.length() - 1) - key.indexOf(r);
-                    encripted += key.charAt(4 - index);
+                if (first == l) {
+                    encripted += key.charAt(key.indexOf(l)+5);
+                    if (key.indexOf(r)+5 > key.length() - 1) {
+                        int index = (key.length() - 1) - key.indexOf(r);
+                        encripted += key.charAt(4 - index);
+                    } else {
+                        encripted += key.charAt(key.indexOf(r)+5);
+                    }
                 } else {
-                    encripted += key.charAt(key.indexOf(r)+5);
+                    if (key.indexOf(r)+5 > key.length() - 1) {
+                        int index = (key.length() - 1) - key.indexOf(r);
+                        encripted += key.charAt(4 - index);
+                    } else {
+                        encripted += key.charAt(key.indexOf(r)+5);
+                    }
+                    encripted += key.charAt(key.indexOf(l)+5);
                 }
                 
             } else if (key.indexOf(l) / 5 == key.indexOf(r) / 5) {
                 
                 caso = "horizontal";
-                encripted += key.charAt(key.indexOf(l)+1);
-                encripted += key.charAt(key.indexOf(r)+1);
+                if (first == l) {
+                    encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
+                    encripted += (key.indexOf(r)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(r)+1);
+                } else {
+                    encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
+                    encripted += (key.indexOf(r)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(r)+1);
+                }
 
             } else {
                 caso = "cuadrado";
-                if (key.indexOf(l+5+(linediff * 5)) <= key.indexOf(r)) {
+                if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
                     encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                     encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
                 } else {
-                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                     encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                 }
             }
             System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
