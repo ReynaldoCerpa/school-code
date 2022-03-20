@@ -75,8 +75,8 @@ void decipher() {
     std::cin >> key;
 
     for (i = 0; i < strlen(msg); i++) {
-        if ((int(msg[i]) + key) > 122) {
-            msg[i] = int('a') + ((int(msg[i]) - 122) + key) - 1;
+        if ((int(msg[i]) + key) > 90) {
+            msg[i] = int('A') + ((int(msg[i]) - 90) + key) - 1;
         }
         else {
             msg[i] = int(msg[i]) + key;
