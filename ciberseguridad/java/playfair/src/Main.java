@@ -4,7 +4,7 @@ import java.lang.Math;
 public class Main{
     public static Scanner scan = new Scanner(System.in);
     public static String msg, key = null, encripted = "";
-    public static String defKey = "abcdefghijklmnopqrstuvxyzabcde";
+    public static String defKey = "abcdefghijklmnopqrstuvxyz";
 
     public static void makeKey(String val) {
         String temp = "";
@@ -19,9 +19,6 @@ public class Main{
                 if (key.indexOf(defKey.charAt(i)) == -1) {
                     key += defKey.charAt(i);
                 }
-            }
-            for (int i = 0; i < 5; i++) {
-                key += key.charAt(i);
             }
         } else {
             key = defKey;
@@ -51,24 +48,28 @@ public class Main{
             if (key.indexOf(r) == key.indexOf(l) + 5 + (linediff * 5)) {
 
                 caso = "vertical";
-                encripted += key.charAt(key.indexOf(l+5));
-                encripted += key.charAt(key.indexOf(r+5));
+                encripted += key.charAt(key.indexOf(l)+5);
+                if (key.indexOf(r)+5 > key.length() - 1) {
+                    int index = (key.length() - 1) - key.indexOf(r);
+                    encripted += key.charAt(4 - index);
+                } else {
+                    encripted += key.charAt(key.indexOf(r)+5);
+                }
                 
             } else if (key.indexOf(l) / 5 == key.indexOf(r) / 5) {
                 
                 caso = "horizontal";
-                encripted += key.charAt(key.indexOf(l+1));
-                encripted += key.charAt(key.indexOf(r+1));
+                encripted += key.charAt(key.indexOf(l)+1);
+                encripted += key.charAt(key.indexOf(r)+1);
 
             } else {
-
                 caso = "cuadrado";
-                if (key.indexOf(r+5+(linediff * 5)) < key.indexOf(l+5+(linediff * 5))) {
-                    encripted += key.charAt(key.indexOf(r-5-(linediff * 5)));
-                    encripted += key.charAt(key.indexOf(l+5+(linediff * 5)));
+                if (key.indexOf(l+5+(linediff * 5)) <= key.indexOf(r)) {
+                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
                 } else {
-                    encripted += key.charAt(key.indexOf(l+5+(linediff * 5)));
-                    encripted += key.charAt(key.indexOf(r-5-(linediff * 5)));
+                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
                 }
             }
             System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
