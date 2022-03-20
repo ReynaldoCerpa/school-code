@@ -50,19 +50,9 @@ public class Main{
                 caso = "vertical";
                 if (first == l) {
                     encripted += key.charAt(key.indexOf(l)+5);
-                    if (key.indexOf(r)+5 > key.length() - 1) {
-                        int index = (key.length() - 1) - key.indexOf(r);
-                        encripted += key.charAt(4 - index);
-                    } else {
-                        encripted += key.charAt(key.indexOf(r)+5);
-                    }
+                    encripted += ((key.indexOf(r)+5 > key.length() - 1)) ? key.charAt(4 - ((key.length() - 1) - key.indexOf(r))) : key.charAt(key.indexOf(r)+5);
                 } else {
-                    if (key.indexOf(r)+5 > key.length() - 1) {
-                        int index = (key.length() - 1) - key.indexOf(r);
-                        encripted += key.charAt(4 - index);
-                    } else {
-                        encripted += key.charAt(key.indexOf(r)+5);
-                    }
+                    encripted += ((key.indexOf(r)+5 > key.length() - 1)) ? key.charAt(4 - ((key.length() - 1) - key.indexOf(r))) : key.charAt(key.indexOf(r)+5);
                     encripted += key.charAt(key.indexOf(l)+5);
                 }
                 
