@@ -33,6 +33,12 @@ public class Main{
         msg = scan.nextLine();
         if (msg.length() % 2 != 0) msg += "x";
 
+        System.out.println("\n"+key.charAt(0)+" "+key.charAt(1)+" "+key.charAt(2)+" "+key.charAt(3)+" "+key.charAt(4));
+        System.out.println(key.charAt(5)+" "+key.charAt(6)+" "+key.charAt(7)+" "+key.charAt(8)+" "+key.charAt(9));
+        System.out.println(key.charAt(10)+" "+key.charAt(11)+" "+key.charAt(12)+" "+key.charAt(13)+" "+key.charAt(14));
+        System.out.println(key.charAt(15)+" "+key.charAt(16)+" "+key.charAt(17)+" "+key.charAt(18)+" "+key.charAt(19));
+        System.out.println(key.charAt(20)+" "+key.charAt(21)+" "+key.charAt(22)+" "+key.charAt(23)+" "+key.charAt(24)+"\n");
+
         for (int i = 0; i < msg.length(); i+=2) {
             char l = msg.charAt(i), r = msg.charAt(i+1), first = l; //represents the left and right letter from a straight array perspective
             if(key.indexOf(msg.charAt(i)) > key.indexOf(msg.charAt(i+1))){
@@ -63,31 +69,21 @@ public class Main{
                     encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
                     encripted += (key.indexOf(r)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(r)+1);
                 } else {
-                    encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
                     encripted += (key.indexOf(r)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(r)+1);
+                    encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
                 }
 
             } else {
                 caso = "cuadrado";
-                if (first == r) {
-                    if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
-                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
-                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
-                    } else {
-                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
-                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
-                    }
+                if (first == l) {
+                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
                 } else {
-                    if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
-                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
-                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
-                    } else {
-                        encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
-                        encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
-                    }
-                }
+                    encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
+                    encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
+                } 
             }
-            System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
+            //System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
         }
         System.out.println("Mensaje encriptado: "+encripted);
 
