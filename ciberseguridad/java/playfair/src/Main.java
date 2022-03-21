@@ -69,7 +69,7 @@ public class Main{
 
             } else {
                 caso = "cuadrado";
-                if (first == l) {
+                if (first == r) {
                     if (key.indexOf(l) < key.indexOf(r - 5 - (linediff * 5))) {
                         encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                         encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
