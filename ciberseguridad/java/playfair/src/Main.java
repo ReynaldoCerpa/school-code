@@ -54,10 +54,8 @@ public class Main{
             if(linediff < 0) linediff = 0;
 
             //case checker
-            String caso = "";
             if (key.indexOf(r) == key.indexOf(l) + 5 + (linediff * 5)) {
 
-                caso = "vertical";
                 if (first == l) {
                     encripted += key.charAt(key.indexOf(l)+5);
                     encripted += ((key.indexOf(r)+5 > key.length() - 1)) ? key.charAt(4 - ((key.length() - 1) - key.indexOf(r))) : key.charAt(key.indexOf(r)+5);
@@ -68,7 +66,6 @@ public class Main{
                 
             } else if (key.indexOf(l) / 5 == key.indexOf(r) / 5) {
                 
-                caso = "horizontal";
                 if (first == l) {
                     encripted += (key.indexOf(l)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(l)+1);
                     encripted += (key.indexOf(r)+1 > key.length() - 1) ? "a" : key.charAt(key.indexOf(r)+1);
@@ -78,7 +75,7 @@ public class Main{
                 }
 
             } else {
-                caso = "cuadrado";
+
                 if (first == l) {
                     encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                     encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
@@ -86,8 +83,8 @@ public class Main{
                     encripted += key.charAt(key.indexOf(l)+5+(linediff * 5));
                     encripted += key.charAt(key.indexOf(r)-5-(linediff * 5));
                 } 
+
             }
-            //System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
         }
         System.out.println("\nMensaje encriptado: "+encripted+"\n");
     }
