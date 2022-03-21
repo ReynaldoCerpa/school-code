@@ -14,13 +14,22 @@ public class Main{
                 }
             }
             key = temp;
-            for (int i = 0; i < (25 - temp.length()); i++) {
+            for (int i = 0; i < 25; i++) {
                 if (key.indexOf(defKey.charAt(i)) == -1) {
                     key += defKey.charAt(i);
                 }
             }
         } else {
             key = defKey;
+        }
+
+        for (int i = 0; i < 25; i++) {
+            if (i % 5 == 0) {
+                System.out.print("\n "+key.charAt(i)+" ");
+            } else {
+                System.out.print(key.charAt(i)+" ");
+            }    
+            if (i == 24) System.out.println("\n");
         }
     }
 
@@ -33,11 +42,6 @@ public class Main{
         msg = scan.nextLine();
         if (msg.length() % 2 != 0) msg += "x";
 
-        System.out.println("\n"+key.charAt(0)+" "+key.charAt(1)+" "+key.charAt(2)+" "+key.charAt(3)+" "+key.charAt(4));
-        System.out.println(key.charAt(5)+" "+key.charAt(6)+" "+key.charAt(7)+" "+key.charAt(8)+" "+key.charAt(9));
-        System.out.println(key.charAt(10)+" "+key.charAt(11)+" "+key.charAt(12)+" "+key.charAt(13)+" "+key.charAt(14));
-        System.out.println(key.charAt(15)+" "+key.charAt(16)+" "+key.charAt(17)+" "+key.charAt(18)+" "+key.charAt(19));
-        System.out.println(key.charAt(20)+" "+key.charAt(21)+" "+key.charAt(22)+" "+key.charAt(23)+" "+key.charAt(24)+"\n");
 
         for (int i = 0; i < msg.length(); i+=2) {
             char l = msg.charAt(i), r = msg.charAt(i+1), first = l; //represents the left and right letter from a straight array perspective
@@ -85,8 +89,7 @@ public class Main{
             }
             //System.out.println("Left: "+l+" Right: "+r+" Separación: "+linediff+" Caso: "+caso);
         }
-        System.out.println("Mensaje encriptado: "+encripted);
-
+        System.out.println("\nMensaje encriptado: "+encripted+"\n");
     }
 
     public static void decipher() {
