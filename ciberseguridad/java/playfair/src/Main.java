@@ -13,8 +13,8 @@ public class Main{
                     temp += val.charAt(i);
                 }
             }
-            key= temp;
-            for (int i = 0; i < 25; i++) {
+            key = temp;
+            for (int i = 0; i < (25 - temp.length()); i++) {
                 if (key.indexOf(defKey.charAt(i)) == -1) {
                     key += defKey.charAt(i);
                 }
