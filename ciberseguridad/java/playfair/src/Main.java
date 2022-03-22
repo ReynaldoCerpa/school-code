@@ -114,11 +114,11 @@ public class Main{
             if (key.indexOf(r) == key.indexOf(l) + 5 + (linediff * 5)) {
                 //Caso vertical
                 if (first == l) {
-                    decrypted += ((key.indexOf(l)-5 < key.length() - 1)) ? key.charAt(((key.length() - 1) - (4 - key.indexOf(l)))) : key.charAt(key.indexOf(l)+5);
+                    decrypted += ((key.indexOf(l)-5) < 0) ? key.charAt(((key.length() - 1) - (4 - key.indexOf(l)))) : key.charAt(key.indexOf(l)-5);
                     decrypted += key.charAt(key.indexOf(r)-5);
                 } else {
-                    decrypted += key.charAt(key.indexOf(r)+5);
-                    decrypted += ((key.indexOf(l)-5 < key.length() - 1)) ? key.charAt(((key.length() - 1) - (4 - key.indexOf(l)))) : key.charAt(key.indexOf(l)+5);
+                    decrypted += key.charAt(key.indexOf(r)-5);
+                    decrypted += ((key.indexOf(l)-5) < 0) ? key.charAt(((key.length() - 1) - (4 - key.indexOf(l)))) : key.charAt(key.indexOf(l)-5);
                 }
                 
             } else if (key.indexOf(l) / 5 == key.indexOf(r) / 5) {
